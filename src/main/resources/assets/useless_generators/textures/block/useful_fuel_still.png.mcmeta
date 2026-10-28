@@ -1,0 +1,3 @@
+{
+  "forge": { "loader": "useless_generators:matter_flow" }
+}

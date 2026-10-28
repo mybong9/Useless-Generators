@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "useless_generators:block/cosmic_heart",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "useless_generators:block/cosmic_heart",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "useless_generators:block/cosmic_heart",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "useless_generators:block/cosmic_heart",
+      "y": 270
+    }
+  }
+}

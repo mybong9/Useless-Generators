@@ -1,0 +1,20 @@
+{
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "U": {
+      "item": "useless_generators:useless_block_9"
+    }
+  },
+  "pattern": [
+    "OOO",
+    "OUO",
+    "OOO"
+  ],
+  "result": {
+    "count": 16,
+    "item": "useless_generators:cosmic_hull"
+  },
+  "type": "minecraft:crafting_shaped"
+}

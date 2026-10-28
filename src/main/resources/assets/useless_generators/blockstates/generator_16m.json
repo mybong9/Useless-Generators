@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "y": 90,
+      "model": "useless_generators:block/generator_16m"
+    },
+    "facing=west": {
+      "y": 270,
+      "model": "useless_generators:block/generator_16m"
+    },
+    "facing=north": {
+      "model": "useless_generators:block/generator_16m"
+    },
+    "facing=south": {
+      "y": 180,
+      "model": "useless_generators:block/generator_16m"
+    }
+  }
+}

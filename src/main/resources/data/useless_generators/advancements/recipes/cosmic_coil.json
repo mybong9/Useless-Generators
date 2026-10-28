@@ -1,0 +1,34 @@
+{
+  "requirements": [
+    [
+      "has_material",
+      "has_the_recipe"
+    ]
+  ],
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "useless_generators:generator_1t"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "useless_generators:cosmic_coil"
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "useless_generators:cosmic_coil"
+    ]
+  },
+  "parent": "minecraft:recipes/root"
+}

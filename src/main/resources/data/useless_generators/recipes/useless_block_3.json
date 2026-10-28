@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "useless_mod:useless_ingot_tier_3"
+    }
+  },
+  "pattern": [
+    "III",
+    "III",
+    "III"
+  ],
+  "result": {
+    "item": "useless_generators:useless_block_3"
+  }
+}

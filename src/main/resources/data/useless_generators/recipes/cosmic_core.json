@@ -1,0 +1,23 @@
+{
+  "key": {
+    "U": {
+      "item": "useless_mod:useful_ingot"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "R": {
+      "item": "useless_generators:cosmic_coil"
+    }
+  },
+  "pattern": [
+    "UNU",
+    "NRN",
+    "UNU"
+  ],
+  "result": {
+    "count": 8,
+    "item": "useless_generators:cosmic_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

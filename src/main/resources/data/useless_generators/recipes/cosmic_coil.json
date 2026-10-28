@@ -1,0 +1,23 @@
+{
+  "key": {
+    "C": {
+      "item": "minecraft:copper_block"
+    },
+    "U": {
+      "item": "useless_generators:useless_block_9"
+    },
+    "R": {
+      "item": "useless_generators:cosmic_casing"
+    }
+  },
+  "pattern": [
+    "CUC",
+    "URU",
+    "CUC"
+  ],
+  "result": {
+    "count": 16,
+    "item": "useless_generators:cosmic_coil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

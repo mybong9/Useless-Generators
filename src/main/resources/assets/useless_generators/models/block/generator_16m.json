@@ -1,0 +1,12 @@
+{
+  "textures": {
+    "west": "useless_generators:block/generator_16m_top",
+    "down": "useless_generators:block/generator_16m_top",
+    "particle": "useless_generators:block/generator_16m_top",
+    "south": "useless_generators:block/generator_16m_side",
+    "up": "useless_generators:block/generator_16m_top",
+    "east": "useless_generators:block/generator_16m_top",
+    "north": "useless_generators:block/generator_16m_front"
+  },
+  "parent": "minecraft:block/cube"
+}

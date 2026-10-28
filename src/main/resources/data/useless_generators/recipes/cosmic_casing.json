@@ -1,0 +1,23 @@
+{
+  "key": {
+    "U": {
+      "item": "useless_generators:useless_block_8"
+    },
+    "Q": {
+      "item": "minecraft:quartz_block"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "pattern": [
+    "IQI",
+    "QUQ",
+    "IQI"
+  ],
+  "result": {
+    "count": 16,
+    "item": "useless_generators:cosmic_casing"
+  },
+  "type": "minecraft:crafting_shaped"
+}

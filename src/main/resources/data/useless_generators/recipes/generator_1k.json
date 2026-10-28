@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "useless_generators:generator_1k"
+  },
+  "pattern": [
+    "IRI",
+    "RFR",
+    "IRI"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "type": "minecraft:crafting_shaped"
+}

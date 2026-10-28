@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "useless_generators:generator_16m"
+  },
+  "pattern": [
+    "RPR",
+    "PCP",
+    "RPR"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:diamond"
+    },
+    "P": {
+      "item": "useless_generators:generator_1m"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "type": "minecraft:crafting_shaped"
+}

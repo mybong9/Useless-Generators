@@ -1,0 +1,95 @@
+{
+  "id": "useless_generators:fuel/useful_fuel",
+  "tier": 0,
+  "energy": 100000000,
+  "output_fluids": [
+    {
+      "amount": 1000,
+      "id": "useless_generators:useful_fuel"
+    }
+  ],
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "useless_mod:useful_ingot"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:coal_block"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_1"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_2"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_3"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_4"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_5"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_6"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_7"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_8"
+      },
+      "count": 1024
+    },
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_9"
+      },
+      "count": 1024
+    }
+  ],
+  "type": "useless_mod:advanced_alloy_furnace",
+  "process_time": 1200,
+  "input_fluids": [
+    {
+      "ingredient": [
+        {
+          "fluid": {
+            "FluidName": "minecraft:lava",
+            "Amount": 1
+          },
+          "type": "single"
+        }
+      ],
+      "amount": 2100000000
+    }
+  ]
+}

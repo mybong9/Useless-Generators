@@ -1,0 +1,26 @@
+{
+  "result": {
+    "count": 1,
+    "item": "useless_generators:me_energy"
+  },
+  "pattern": [
+    "ICI",
+    "PMP",
+    "ICI"
+  ],
+  "key": {
+    "P": {
+      "item": "ae2:energy_acceptor"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "ae2:calculation_processor"
+    },
+    "M": {
+      "item": "useless_generators:cosmic_casing"
+    }
+  },
+  "type": "minecraft:crafting_shaped"
+}

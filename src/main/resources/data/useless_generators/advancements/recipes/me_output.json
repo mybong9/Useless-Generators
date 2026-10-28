@@ -1,0 +1,34 @@
+{
+  "requirements": [
+    [
+      "has_casing",
+      "has_recipe"
+    ]
+  ],
+  "criteria": {
+    "has_casing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "useless_generators:cosmic_casing"
+            ]
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "useless_generators:me_output"
+      }
+    }
+  },
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "useless_generators:me_output"
+    ]
+  }
+}

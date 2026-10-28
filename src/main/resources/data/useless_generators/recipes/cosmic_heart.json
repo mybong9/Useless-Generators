@@ -1,0 +1,26 @@
+{
+  "key": {
+    "C": {
+      "item": "useless_generators:cosmic_core"
+    },
+    "U": {
+      "item": "useless_mod:useful_ingot"
+    },
+    "G": {
+      "item": "useless_generators:generator_1t"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "CGC",
+    "GSG",
+    "CUC"
+  ],
+  "result": {
+    "count": 1,
+    "item": "useless_generators:cosmic_heart"
+  },
+  "type": "minecraft:crafting_shaped"
+}

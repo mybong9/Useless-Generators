@@ -1,0 +1,12 @@
+{
+  "textures": {
+    "south": "useless_generators:block/cosmic_heart_rear",
+    "west": "useless_generators:block/cosmic_casing",
+    "down": "useless_generators:block/cosmic_casing",
+    "east": "useless_generators:block/cosmic_casing",
+    "up": "useless_generators:block/cosmic_casing",
+    "particle": "useless_generators:block/cosmic_casing",
+    "north": "useless_generators:block/cosmic_heart_front"
+  },
+  "parent": "minecraft:block/cube"
+}

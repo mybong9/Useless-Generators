@@ -1,0 +1,47 @@
+{
+  "id": "useless_generators:fuel/useless_fuel_5",
+  "tier": 0,
+  "energy": 16000,
+  "output_fluids": [
+    {
+      "amount": 1000,
+      "id": "useless_generators:useless_fuel_5"
+    }
+  ],
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "useless_generators:useless_block_5"
+      },
+      "count": 16
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:coal"
+      },
+      "count": 64
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:gunpowder"
+      },
+      "count": 16
+    }
+  ],
+  "type": "useless_mod:advanced_alloy_furnace",
+  "process_time": 500,
+  "input_fluids": [
+    {
+      "ingredient": [
+        {
+          "fluid": {
+            "FluidName": "minecraft:water",
+            "Amount": 1
+          },
+          "type": "single"
+        }
+      ],
+      "amount": 16000
+    }
+  ]
+}

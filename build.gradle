@@ -1,0 +1,59 @@
+plugins {
+    id 'java-library'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+}
+version = '1.4.14'
+group = 'com.sorrowmist.uselessgenerators'
+base { archivesName = 'useless_generators' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }
+minecraft {
+    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
+    copyIdeResources = true
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            mods {
+                useless_generators { source sourceSets.main }
+                useless_core { source project(':useless_core').sourceSets.main }
+            }
+        }
+        client {}
+        server { args '--nogui' }
+    }
+}
+repositories {
+    maven { url = 'https://maven.minecraftforge.net' }
+    maven { url = 'https://cursemaven.com' }
+    mavenCentral()
+}
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+    implementation project(':useless_core')
+    compileOnly project(':useless_mod')
+    implementation fg.deobf('curse.maven:applied-energistics-2-223794:7148487')
+    compileOnly fg.deobf('curse.maven:applied-flux-965012:7072853')
+    compileOnly fg.deobf('curse.maven:flux-networks-248020:5234697')
+    compileOnly fg.deobf('curse.maven:jei-238222:7037120')
+    compileOnly fg.deobf('curse.maven:emi-580555:6420945')
+}
+tasks.named('jar', Jar).configure {
+    manifest.attributes('MixinConfigs': 'useless_generators.mixins.json')
+    finalizedBy 'reobfJar'
+}
+tasks.register('energyChecks', JavaExec) {
+    dependsOn testClasses
+    // These checks exercise pure long arithmetic; do not start a Forge runtime.
+    classpath = files(sourceSets.test.output, sourceSets.main.output, project(':useless_core').sourceSets.main.output)
+    mainClass = 'com.sorrowmist.uselessgenerators.EnergyChecks'
+}
+tasks.named('check').configure { dependsOn 'energyChecks' }
+tasks.named('test', Test).configure {
+    classpath = files(sourceSets.test.output, sourceSets.main.output, project(':useless_core').sourceSets.main.output)
+}
+tasks.register('packageMod', Copy) {
+    dependsOn 'reobfJar'
+    from tasks.named('jar').flatMap { it.archiveFile }
+    into rootProject.layout.projectDirectory.dir('dist')
+}

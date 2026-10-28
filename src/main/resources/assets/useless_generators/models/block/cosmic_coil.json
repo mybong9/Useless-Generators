@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "useless_generators:block/cosmic_coil"
+  },
+  "parent": "minecraft:block/cube_all"
+}
