@@ -22,26 +22,26 @@ Minecraft **1.20.1**, **Forge**, mod ID `useless_generators`, current source ver
 
 | 依赖 | Mod ID | 最低版本 / 加载范围 | 适用端 |
 | --- | --- | --- | --- |
-| Minecraft Forge | `forge` | 47 或更高；`[47,)` | 客户端、服务端 |
-| Applied Energistics 2（AE2） | `ae2` | 15.0.0 或更高；`[15.0.0,)` | 客户端、服务端 |
-| Minecraft | `minecraft` | [1.20.1,1.21)；`[1.20.1,1.21)` | 客户端、服务端 |
-| [Useless Core](https://github.com/mybong9/Useless-Core) | `useless_core` | 1.0.14 或更高；`[1.0.14,)` | 客户端、服务端 |
-| [Useless CE Unofficial](https://github.com/mybong9/Useless-CE-Unofficial) | `useless_mod` | 1.3.23 或更高；`[1.3.23,)` | 客户端、服务端 |
+| Minecraft Forge | `forge` | 47 或更高` | 客户端、服务端 |
+| Applied Energistics 2（AE2） | `ae2` | 15.0.0 或更高 | 客户端、服务端 |
+| Minecraft | `minecraft` | 1.20.1 | 客户端、服务端 |
+| [Useless Core](https://github.com/mybong9/Useless-Core) | `useless_core` | 1.0.14 或更高 | 客户端、服务端 |
+| [Useless CE Unofficial](https://github.com/mybong9/Useless-CE-Unofficial) | `useless_mod` | 1.3.23 或更高| 客户端、服务端 |
 
 ### 可选联动
 
 | 依赖 | Mod ID | 最低版本 / 加载范围 | 适用端 |
 | --- | --- | --- | --- |
-| Just Enough Items（JEI） | `jei` | 15.12.3 或更高；`[15.12.3,)` | 仅客户端 |
-| EMI | `emi` | 1.1.0 或更高；`[1.1.0,)` | 仅客户端 |
-| Applied Flux | `appflux` | 未限定最低版本；`[0,)` | 客户端、服务端 |
-| Flux Networks | `fluxnetworks` | 未限定最低版本；`[0,)` | 客户端、服务端 |
+| Just Enough Items（JEI） | `jei` | 15.12.3 或更高 | 仅客户端 |
+| EMI | `emi` | 1.1.0 或更高 | 仅客户端 |
+| Applied Flux | `appflux` | 未限定最低版本 | 客户端、服务端 |
+| Flux Networks | `fluxnetworks` | 未限定最低版本| 客户端、服务端 |
 
 可选联动不要求安装；安装时须符合上表版本范围，并安装该联动模组自身要求的前置。未声明最低版本的其他动态联动不在此处编造版本下限。
 
 MixinExtras 由 Useless Core 内置提供，通常无需单独安装。
 
-`[x,)` 表示不低于 x，且未设置版本上限；Minecraft 的宽松加载声明不代表本工程已支持其他 Minecraft 主版本。开发构建及本地编译 API 清单见 [BUILDING.md](BUILDING.md)。
+Minecraft 的宽松加载声明不代表本工程已支持其他 Minecraft 主版本。开发构建及本地编译 API 清单见 [BUILDING.md](BUILDING.md)。
 <!-- runtime-dependencies:end -->
 
 ## Source and attribution
