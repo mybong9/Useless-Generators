@@ -217,5 +217,10 @@
   "gui.useless_generators.me.buffer": "Local buffer",
   "gui.useless_generators.me.marks": "Marks / Filters",
   "gui.useless_generators.me.target_limit": "Enter a replenishment target: 1–%s; fluids use mB",
-  "gui.useless_generators.me.stock_hint": "Click to extract items, or fill a fluid container. Output hatches also accept resources."
+  "gui.useless_generators.me.stock_hint": "Click to extract items, or fill a fluid container. Output hatches also accept resources.",
+  "gui.useless_generators.cosmic.mode_ore": "Mode: Minerals",
+  "gui.useless_generators.cosmic.mode_power": "Mode: Power",
+  "gui.useless_generators.cosmic.mode_hint": "Generate 2.1G of each ore/raw material per tick into ME storage. Uses 0.1 mB/s of useful matter total. 1 mB prepays 200 working ticks; unused credit is saved.",
+  "gui.useless_generators.cosmic.ore_rate": "Each mineral: 2.1G/t; fuel: 0.1 mB/s",
+  "gui.useless_generators.cosmic.ore_status": "Mineral mode: requires online ME storage and useful matter"
 }

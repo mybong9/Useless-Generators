@@ -16,7 +16,7 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
 public final class GeneratorMenu extends AbstractContainerMenu {
-    public static final int DATA_SIZE = 59;
+    public static final int DATA_SIZE = 60;
     public static final int CONTAINER_ACTION = 12;
     public static final int RECHECK_ACTION = 13;
     public static final int WORK_ACTION = 14;
@@ -52,6 +52,7 @@ public final class GeneratorMenu extends AbstractContainerMenu {
                 if (reactor == null) return 0;
                 if (index == 52) return generator.workEnabled ? 1 : 0;
                 if (index >= 53 && index < 58) return reactor.hatchCount(MeHatchKind.values()[index - 53]);
+                if (index == 59) return generator.oreProduction.enabled ? 1 : 0;
                 if (index == 58) return reactor.onlineHatches();
                 if (index == 37) return reactor.status().ordinal();
                 if (index == 38) return reactor.checked();
@@ -71,6 +72,7 @@ public final class GeneratorMenu extends AbstractContainerMenu {
         }
         for (int column = 0; column < 9; column++) addSlot(new Slot(inventory, column, (cosmic ? 80 : 62) + column * 18, cosmic ? 214 : 216));
     }
+    public boolean oreMode() { return data.get(59) != 0; }
     public boolean workEnabled() { return data.get(52) != 0; }
     public int hatchCount(MeHatchKind kind) { return data.get(53 + kind.ordinal()); }
     public int onlineHatches() { return data.get(58); }
@@ -114,6 +116,7 @@ public final class GeneratorMenu extends AbstractContainerMenu {
             player.getInventory().placeItemBackInInventory(new ItemStack(UselessGenerators.COSMIC_CONSTRUCTION_PATTERN.get()),false);
             player.getInventory().setChanged();broadcastChanges();return true;
         }
+        if(button==16 && generator.reactor!=null){ generator.oreProduction.enabled=!generator.oreProduction.enabled; generator.setChanged(); broadcastChanges(); return true; }
         if (button == RECHECK_ACTION && generator.reactor != null) {
             generator.reactor.recheck(); broadcastChanges(); return true;
         }

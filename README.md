@@ -1,6 +1,6 @@
 # Useless-Generators
 
-Minecraft **1.20.1**, **Forge**, mod ID `useless_generators`, current source version **1.4.14**.
+Minecraft **1.20.1**, **Forge**, mod ID `useless_generators`, current source version **1.4.16**.
 
 本仓库为该模组的独立源码仓库。请查看 [构建说明 / Building](BUILDING.md)
 了解四个仓库的联合构建方式；发布更新记录见 [CHANGELOG.md](CHANGELOG.md)。
@@ -65,7 +65,7 @@ Minecraft **1.20.1**, **Forge**, mod ID `useless_generators`, current source ver
 <!-- runtime-dependencies:start -->
 ## 运行环境与依赖版本
 
-对应发布版本：**1.4.14**。本工程目标为 **Minecraft 1.20.1 / Forge**，使用 **Java 17+**（编译目标为 Java 17）。
+对应发布版本：**1.4.16**。本工程目标为 **Minecraft 1.20.1 / Forge**，使用 **Java 17+**（编译目标为 Java 17）。
 以下依赖范围直接依据该版本发布 JAR 的 `META-INF/mods.toml`，不是编译时所用依赖版本。
 
 ### 必需前置
@@ -76,7 +76,7 @@ Minecraft **1.20.1**, **Forge**, mod ID `useless_generators`, current source ver
 | Applied Energistics 2（AE2） | `ae2` | 15.0.0 或更高 | 客户端、服务端 |
 | Minecraft | `minecraft` | 1.20.1 | 客户端、服务端 |
 | [Useless Core](https://github.com/mybong9/Useless-Core) | `useless_core` | 1.0.14 或更高 | 客户端、服务端 |
-| [Useless CE Unofficial](https://github.com/mybong9/Useless-CE-Unofficial) | `useless_mod` | 1.3.23 或更高| 客户端、服务端 |
+| [Useless CE Unofficial](https://github.com/mybong9/Useless-CE-Unofficial) | `useless_mod` | 1.4.7 或更高| 客户端、服务端 |
 
 ### 可选联动
 
@@ -109,3 +109,5 @@ crash reports, local configuration, caches, credentials and third-party dependen
 本项目采用 [MIT License](LICENSE)。再分发时请保留许可证和版权声明。
 第三方代码、资源及依赖仍保留各自已有的许可证和版权声明，本许可证不替代这些声明。
 <!-- project-license:end -->
+
+矿物模式：界面切换后将每种矿石和粗矿各 21 亿个/t 写入 ME 网络，总耗有用物质 0.1 mB/s。1 mB 预付 200 个实际产出 tick，余量保存；需要成型结构和在线可用存储。

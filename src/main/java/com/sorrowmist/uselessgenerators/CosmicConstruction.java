@@ -53,7 +53,7 @@ public final class CosmicConstruction {
         if (!(event.getLevel().getBlockEntity(event.getPos()) instanceof GeneratorBlockEntity core) || core.reactor == null) return false;
         event.setCanceled(true); event.setCancellationResult(InteractionResult.sidedSuccess(event.getLevel().isClientSide));
         if (event.getEntity() instanceof ServerPlayer player) {
-            boolean remove = CoreItemComponents.getOrDefault(staff, UselessComponents.ConstructionWandCoreComponent.get(), ConstructionWandCoreMode.DEFAULT) == ConstructionWandCoreMode.DESTRUCTION;
+            boolean remove = (event.getEntity().isShiftKeyDown() && staff.hasTag() && staff.getTag().getBoolean("useless_stretcher_dismantle")) || CoreItemComponents.getOrDefault(staff, UselessComponents.ConstructionWandCoreComponent.get(), ConstructionWandCoreMode.DEFAULT) == ConstructionWandCoreMode.DESTRUCTION;
             start(player, core, staff, remove);
         }
         return true;
@@ -169,7 +169,7 @@ public final class CosmicConstruction {
             if (!allowed(job,target.pos())) return stop(job,"protected",target.pos().toShortString());
             if (!job.level.getBlockState(target.pos()).equals(target.before())) return stop(job,"changed",target.pos().toShortString());
             if (job.remove) {
-                if (ForgeHooks.onBlockBreakEvent(job.level,job.player.gameMode.getGameModeForPlayer(),job.player,target.pos()) < 0)
+                if (com.sorrowmist.useless.utils.mining.MiningDispatcher.checkStructureBreak(job.player,target.pos()) < 0)
                     return stop(job,"protected",target.pos().toShortString());
                 if (!job.level.getBlockState(target.pos()).equals(target.before())) return stop(job,"changed",target.pos().toShortString());
                 var drops = Block.getDrops(target.before(),job.level,target.pos(),job.level.getBlockEntity(target.pos()),job.player,job.staff);

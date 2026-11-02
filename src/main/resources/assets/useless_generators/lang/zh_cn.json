@@ -217,5 +217,10 @@
   "gui.useless_generators.me.buffer": "仓内库存",
   "gui.useless_generators.me.marks": "标记 / 过滤",
   "gui.useless_generators.me.target_limit": "手动输入补货目标量：1～%s；流体单位为 mB",
-  "gui.useless_generators.me.stock_hint": "点击取出物品，或用流体容器装取；输出仓支持放入资源"
+  "gui.useless_generators.me.stock_hint": "点击取出物品，或用流体容器装取；输出仓支持放入资源",
+  "gui.useless_generators.cosmic.mode_ore": "模式：矿物生成",
+  "gui.useless_generators.cosmic.mode_power": "模式：发电",
+  "gui.useless_generators.cosmic.mode_hint": "切换发电／矿物生成。矿物模式将每种矿石和粗矿各 21 亿个/t 送入 ME 网络，总耗有用物质 0.1 mB/s；1 mB 预付 200 个工作 tick，余量保存。",
+  "gui.useless_generators.cosmic.ore_rate": "每种矿物：2.1G/t · 燃料：0.1 mB/s",
+  "gui.useless_generators.cosmic.ore_status": "矿物模式：需要在线 ME 网络、可用存储和有用物质"
 }

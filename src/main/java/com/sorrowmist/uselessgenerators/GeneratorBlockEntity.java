@@ -28,6 +28,7 @@ public final class GeneratorBlockEntity extends BlockEntity implements IInWorldG
     public ReactorStructure reactor;
     public boolean cosmicFormed, cosmicWorking;
     public boolean workEnabled = true;
+    public final CosmicOreProduction oreProduction = new CosmicOreProduction();
     public boolean constructionActive;
     private final IManagedGridNode mainNode;
     private int firstSide;
@@ -90,11 +91,12 @@ public final class GeneratorBlockEntity extends BlockEntity implements IInWorldG
         FuelKind kind = fuel.isEmpty() ? null : GeneratorFuels.kind(fuel.getFluid());
         GeneratorTier tier = ((GeneratorBlock) state.getBlock()).tier;
         boolean valid = kind != null && kind.allowedIn(tier);
-        FuelBurn.Result result = generator.burn.burn(operational && generator.workEnabled ? generator.energy.generationRoom() : 0,
+        FuelBurn.Result result = generator.burn.burn(operational && generator.workEnabled && !generator.oreProduction.enabled ? generator.energy.generationRoom() : 0,
                 valid ? kind.perMb() : 0, valid ? fuel.getAmount() : 0);
         if (result.consumedMb() > 0) generator.fuelTank.drain(result.consumedMb(), IFluidHandler.FluidAction.EXECUTE);
         generator.energy.tick(result.generated());
         generator.generatedLastTick = result.generated();
+        generator.oreProduction.tick(generator, operational);
         boolean networkWorking = operational && generator.isAeConnected();
         if (generator.reactor != null && (generator.cosmicFormed != operational || generator.cosmicWorking != networkWorking)) {
             generator.cosmicFormed = operational; generator.cosmicWorking = networkWorking;
@@ -249,20 +251,20 @@ public final class GeneratorBlockEntity extends BlockEntity implements IInWorldG
     public CompoundTag portableContents() {
         CompoundTag tag = new CompoundTag();
         tag.putLong("Energy", energy.stored()); tag.put("FuelTank", fuelTank.writeToNBT(new CompoundTag()));
-        tag.putLong("FuelRemainder", burn.remainder()); tag.putBoolean("WorkEnabled", workEnabled);
+        oreProduction.save(tag); tag.putLong("FuelRemainder", burn.remainder()); tag.putBoolean("WorkEnabled", workEnabled);
         return tag;
     }
     public void restorePortable(CompoundTag tag) {
         energy.restore(tag.getLong("Energy")); fuelTank.readFromNBT(tag.getCompound("FuelTank"));
         if (!fuelTank.isEmpty() && !fuelTank.isFluidValid(fuelTank.getFluid())) fuelTank.setFluid(FluidStack.EMPTY);
         if (fuelTank.getFluidAmount() > fuelTank.getCapacity()) fuelTank.getFluid().setAmount(fuelTank.getCapacity());
-        burn.restore(tag.getLong("FuelRemainder")); workEnabled = !tag.contains("WorkEnabled") || tag.getBoolean("WorkEnabled");
+        oreProduction.load(tag); burn.restore(tag.getLong("FuelRemainder")); workEnabled = !tag.contains("WorkEnabled") || tag.getBoolean("WorkEnabled");
         setChanged();
     }
     @Override protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag); tag.putLong("Energy", energy.stored()); mainNode.saveToNBT(tag);
         tag.put("FuelTank", fuelTank.writeToNBT(new CompoundTag()));
-        tag.putLong("FuelRemainder", burn.remainder());
+        oreProduction.save(tag); tag.putLong("FuelRemainder", burn.remainder());
         tag.putBoolean("WorkEnabled", workEnabled);
         for (Direction side : Direction.values()) {
             tag.putInt("FluidSide" + side.ordinal(), fluidMode(side).ordinal());
@@ -273,7 +275,7 @@ public final class GeneratorBlockEntity extends BlockEntity implements IInWorldG
         super.load(tag); energy.restore(tag.getLong("Energy")); mainNode.loadFromNBT(tag);
         fuelTank.readFromNBT(tag.getCompound("FuelTank"));
         if (!fuelTank.isEmpty() && !fuelTank.isFluidValid(fuelTank.getFluid())) fuelTank.setFluid(FluidStack.EMPTY);
-        burn.restore(tag.getLong("FuelRemainder"));
+        oreProduction.load(tag); burn.restore(tag.getLong("FuelRemainder"));
         workEnabled = !tag.contains("WorkEnabled") || tag.getBoolean("WorkEnabled");
         for (Direction side : Direction.values()) {
             int index = side.ordinal();

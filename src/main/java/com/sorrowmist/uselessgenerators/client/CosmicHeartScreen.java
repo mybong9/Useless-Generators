@@ -13,11 +13,13 @@ import static com.sorrowmist.uselessgenerators.client.CosmicPreview.text;
 public final class CosmicHeartScreen extends FittedContainerScreen<GeneratorMenu> {
     private final CosmicPreviewModel preview=new CosmicPreviewModel();
     private final MachineButton[] tabs=new MachineButton[4];
+    private MachineButton mode;
     private MachineButton work,recheck,copy,pattern,all,down,up,reset;
     private int page; private boolean dragging,moved; private double startX,startY;
     public CosmicHeartScreen(GeneratorMenu menu,Inventory inventory,Component title) {super(menu,inventory,title);imageWidth=320;imageHeight=238;}
     @Override protected void init() {
         super.init();
+        mode=addRenderableWidget(new MachineButton(leftPos+204,topPos+5,106,17,Component.empty(),b->send(16)));
         String[] pages={"status","structure","hatches","materials"};
         for(int i=0;i<tabs.length;i++){final int target=i;tabs[i]=button(10+i*76,25,72,pages[i],b->{page=target;refresh();});}
         work=button(10,127,96,"pause",b->send(GeneratorMenu.WORK_ACTION));
@@ -35,7 +37,7 @@ public final class CosmicHeartScreen extends FittedContainerScreen<GeneratorMenu
         return addRenderableWidget(new MachineButton(leftPos+x,topPos+y,w,17,text(key),callback));
     }
     private void send(int action){if(minecraft.gameMode!=null)minecraft.gameMode.handleInventoryButtonClick(menu.containerId,action);}
-    private void refresh(){pattern.visible=page==3;recheck.visible=page!=3;for(int i=0;i<4;i++)tabs[i].setSelected(page==i);all.visible=down.visible=up.visible=reset.visible=page==1;work.setMessage(text(menu.workEnabled()?"pause":"resume"));}
+    private void refresh(){mode.setMessage(text(menu.oreMode()?"mode_ore":"mode_power"));mode.setTooltip(Tooltip.create(text("mode_hint")));pattern.visible=page==3;recheck.visible=page!=3;for(int i=0;i<4;i++)tabs[i].setSelected(page==i);all.visible=down.visible=up.visible=reset.visible=page==1;work.setMessage(text(menu.workEnabled()?"pause":"resume"));}
     @Override protected void containerTick(){super.containerTick();refresh();}
     @Override protected void renderBg(GuiGraphics g,float partial,int mx,int my) {
         UiDraw.glass(g,leftPos,topPos,imageWidth,imageHeight,12,UiTheme.DARK);
@@ -47,13 +49,13 @@ public final class CosmicHeartScreen extends FittedContainerScreen<GeneratorMenu
     private void line(GuiGraphics g,int row,Component component,int color){g.drawString(font,font.plainSubstrByWidth(component.getString(),286),15,51+row*12,color,false);}
     private Component status(){return Component.translatable("gui.useless_generators.structure."+menu.structureStatus().name().toLowerCase(Locale.ROOT));}
     private int statusColor(){return menu.structureStatus()==ReactorStructure.Status.FORMED?0xff96c9a3:menu.structureStatus()==ReactorStructure.Status.CHECKING?0xffb6aecb:0xffe1a28f;}
-    private Component workState(){return text(!menu.workEnabled()?"paused":menu.structureStatus()!=ReactorStructure.Status.FORMED?"not_formed":menu.generated()>0?"running":menu.stored()>=menu.capacity()?"storage_full":"waiting_fuel");}
+    private Component workState(){if(menu.oreMode() && menu.workEnabled() && menu.structureStatus()==ReactorStructure.Status.FORMED)return text("ore_status");return text(!menu.workEnabled()?"paused":menu.structureStatus()!=ReactorStructure.Status.FORMED?"not_formed":menu.generated()>0?"running":menu.stored()>=menu.capacity()?"storage_full":"waiting_fuel");}
     public static String number(long value){if(value<1000)return Long.toString(value);String[] units={"k","M","G","T","P","E"};double n=value;int i=-1;do{n/=1000;i++;}while(n>=1000&&i<5);return String.format(Locale.ROOT,"%.2f%s",n,units[i]).replace(".00","");}
     @Override protected void renderLabels(GuiGraphics g,int mx,int my) {
         g.drawString(font,title,12,11,UiTheme.DARK.text(),false);g.drawString(font,playerInventoryTitle,80,145,UiTheme.DARK.muted(),false);
         if(page==0) {
             line(g,0,status(),statusColor());line(g,1,workState(),menu.generated()>0?0xffa6d4b2:0xffd9c7a0);
-            line(g,2,text("power",number(menu.generated()),number(menu.maximumRate())),0xffdfd8eb);
+            line(g,2,menu.oreMode()?text("ore_rate"):text("power",number(menu.generated()),number(menu.maximumRate())),0xffdfd8eb);
             var fuel=menu.fuel();line(g,3,text("fuel",fuel.isEmpty()?text("empty"):fuel.getDisplayName(),fuel.getAmount()),0xffc2bacf);
             line(g,4,text("energy",number(menu.stored()),number(menu.capacity())),0xffc2bacf);
             line(g,5,text("network",text(menu.aeConnected()?"online":"offline"),menu.onlineHatches()),menu.aeConnected()?0xffa6c3ca:0xffa49dad);
