@@ -3,7 +3,7 @@ loaderVersion="[47,)"
 license="MIT"
 [[mods]]
 modId="useless_generators"
-version="1.4.14"
+version="1.4.16"
 displayName="无用之物：发电设备"
 authors="mybong9"
 description='''Ten fluid-fueled generator tiers and Cosmic Heart: a 5x5-chunk, 32-block-high reactor producing 9.2E FE/t, with AE2 and optional Applied Flux connectivity.'''
